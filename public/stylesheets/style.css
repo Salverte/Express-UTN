@@ -6,3 +6,24 @@ body {
 a {
   color: #00B7FF;
 }
+
+.nav-ul {
+  display: flex;
+  padding: 0;
+  list-style: none;
+  background-color: purple;
+}
+.nav-li {
+  flex-grow: 1;
+}
+.nav-a {
+  text-align: center;
+  padding: 8px 0;
+  display: block;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+}
+.nav-a:hover {
+  text-decoration: underline;
+}
