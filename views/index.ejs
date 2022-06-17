@@ -11,5 +11,13 @@
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
     
+    <form action="/buscar" method="GET">
+      <label>
+        Buscar libro:
+        <input type="search" name="termino">
+      </label>
+      <input type="submit" value="Buscar">
+    </form>
+
   </body>
 </html>

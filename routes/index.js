@@ -7,12 +7,23 @@ router.get('/', function(req, res, next) {
 });
 
 /* GET Nosotros. */
-router.get('/nosotros', function(req, res, next) {
+router.get('/nosotros', (req, res) => {
   res.render('pages/nosotros');
 });
 
+/* GET buscar. */
+router.get('/buscar', (req, res) => {
+  //query
+  //guardar en una variable lo que escribió el usuario en el campo
+  let { termino }= req.query;
+  
+  console.log(termino); 
+  //mostrarlo en la terminal
+  res.send('Estas en buscar');
+});
+
 /* GET Contacto */
-router.get('/contacto', function(req, res, next) {
+router.get('/contacto', (req, res) => {
   res.render('pages/contacto');
 });
 module.exports = router;
