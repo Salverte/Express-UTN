@@ -26,4 +26,19 @@ router.get('/buscar', (req, res) => {
 router.get('/contacto', (req, res) => {
   res.render('pages/contacto');
 });
+
+
+/* GET Agregar */
+router.get('/agregar', (req, res) => {
+  res.render('pages/agregar');
+});
+
+
+/* Post Agregar_libro */
+router.post('/agregar-libro', (req, res) => {
+  //conseguir lo que el usuario tipeo
+  console.log(req.body);
+  let {titulo, autor, precio} = req.body;
+  res.send( `Agregaron ${titulo} ${autor} ${precio}`);
+});
 module.exports = router;

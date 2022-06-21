@@ -27,3 +27,16 @@ a {
 .nav-a:hover {
   text-decoration: underline;
 }
+
+.form_agregar_label {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 400px;
+}
+
+
+.form_agregar_label {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+}
