@@ -1,10 +1,25 @@
 var express = require('express');
 var router = express.Router();
 
+const api = require('../api');
+
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Splinter' });
+router.get('/', async (req, res) => {
+  // Llamamos a la función getBooks que está dentro de api
+  const libros = await api.getBooks();
+  console.log(libros);
+  // res.render('index', { title: 'Splinter' });
+  res.send(libros);
 });
+
+router.get('/autores', async (req, res) => {
+  // Llamamos a la función getBooks que está dentro de api
+  const autores = await api.getAuthors();
+
+  // res.render('index', { title: 'Splinter' });
+  res.send(autores);
+});
+
 
 /* GET Nosotros. */
 router.get('/nosotros', (req, res) => {
