@@ -19,5 +19,12 @@
       <input type="submit" value="Buscar">
     </form>
 
-  </body>
+    <h2>Nuestros libros</h2>
+        <ul>
+          <% libros.forEach(libro => { %>
+             <li><a href="/libro/<%= libro.id %>"><%= libro.titulo %> - <%= libro.autor.nombreCompleto %></a></li>
+          <%}) %>
+      </ul>
+  
+   </body>
 </html>

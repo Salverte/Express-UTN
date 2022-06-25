@@ -8,15 +8,21 @@ router.get('/', async (req, res) => {
   // Llamamos a la función getBooks que está dentro de api
   const libros = await api.getBooks();
   console.log(libros);
-  // res.render('index', { title: 'Splinter' });
-  res.send(libros);
+  // res.send(libros);
+  res.render('index', {title: 'EXPRESS', libros});
+});
+
+router.get('/libro/:id', async (req, res) => {
+  // params
+  const libro= await api.getBookById(req.params.id);
+  // console.log(libro);
+
+  // res.send(`Estás viendo el libro ${req.params.id}`);
+  res.render('pages/libro', {libro});
 });
 
 router.get('/autores', async (req, res) => {
-  // Llamamos a la función getBooks que está dentro de api
-  const autores = await api.getAuthors();
-
-  // res.render('index', { title: 'Splinter' });
+    const autores = await api.getAuthors();
   res.send(autores);
 });
 
