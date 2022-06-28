@@ -1,3 +1,5 @@
+const { Op } = require("sequelize");
+
 const db = require('../models');
 
 const getBooks = async () => {
@@ -35,8 +37,22 @@ const getBookById = async (id) => {
     return book;
 };
 
+const findBookByTitle = async (termino) => {
+    const books = await db.libro.findAll({
+    where:{
+        titulo: {
+            [Op.substring]: termino,
+        }
+    }
+    }).then(results => {
+        return results;
+    });
+    return books;
+};
+
 module.exports = {
     getBooks,
     getAuthors,
-    getBookById
+    getBookById,
+    findBookByTitle
 }

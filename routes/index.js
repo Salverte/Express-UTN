@@ -33,15 +33,17 @@ router.get('/nosotros', (req, res) => {
 });
 
 /* GET buscar. */
-router.get('/buscar', (req, res) => {
+router.get('/buscar', async (req, res) => {
   //query
   //guardar en una variable lo que escribió el usuario en el campo
   let { termino }= req.query;
-  
   console.log(termino); 
-  //mostrarlo en la terminal
-  res.send('Estas en buscar');
+ 
+  const resultados = await api.findBookByTitle(termino);
+  // //mostrarlo en la terminal
+  res.send(resultados);
 });
+
 
 /* GET Contacto */
 router.get('/contacto', (req, res) => {
