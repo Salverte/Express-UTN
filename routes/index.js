@@ -52,16 +52,24 @@ router.get('/contacto', (req, res) => {
 
 
 /* GET Agregar */
-router.get('/agregar', (req, res) => {
-  res.render('pages/agregar');
+router.get('/agregar', async (req, res) => {
+  const autores = await api.getAuthors();
+
+  res.render('pages/agregar', {autores});
 });
 
 
 /* Post Agregar_libro */
-router.post('/agregar-libro', (req, res) => {
+router.post('/agregar-libro', async (req, res) => {
   //conseguir lo que el usuario tipeo
   console.log(req.body);
+
   let {titulo, autor, precio} = req.body;
-  res.send( `Agregaron ${titulo} ${autor} ${precio}`);
+  
+  //insertBook = async (titulo, precio, portada, autorId)
+  const libro = await api.insertBook(titulo, precio, "", autor)
+  res.redirect('/');
+  //res.send( `Agregaron ${titulo} ${autor} ${codigoPais} ${precio}`);
 });
+
 module.exports = router;

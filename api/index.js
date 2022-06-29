@@ -17,10 +17,11 @@ const getBooks = async () => {
 
 
 const getAuthors = async () => {
-    const authors = await db.autor.findAll()
-                        .then(results => {
-                        return results;
-                        });
+    const authors = await db.autor.findAll({
+        order: ['nombreCompleto'],
+        }).then(results => {
+            return results;
+        });
 
     return authors;
 }
@@ -50,9 +51,17 @@ const findBookByTitle = async (termino) => {
     return books;
 };
 
+const insertBook = async (titulo, precio, portada, autorId) => {
+    const libro = await db.libro.create({
+        titulo, precio, portada, autorId
+    });
+    return libro;
+}
+
 module.exports = {
     getBooks,
     getAuthors,
     getBookById,
-    findBookByTitle
+    findBookByTitle,
+    insertBook
 }
